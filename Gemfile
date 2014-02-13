@@ -35,6 +35,14 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14'
+  gem 'guard-rspec', '~> 4.2'
+  gem "guard-cucumber", '~> 1.4'
+  # os dependent efficient file polling
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  # show guard notifications on linux
+  gem 'libnotify'
 end
 
 group :test do
@@ -43,4 +51,5 @@ group :test do
   gem 'cucumber-rails', '~> 1.4', :require => false
   gem 'database_cleaner', '~> 1.2'
   gem 'capybara', '~> 2.2'
+  gem 'zeus', '~> 0.13.3'
 end
