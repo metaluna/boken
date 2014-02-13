@@ -34,7 +34,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.0.0.beta' #, '~> 2.14'
   gem 'guard-rspec', '~> 4.2'
   gem "guard-cucumber", '~> 1.4'
   # os dependent efficient file polling
