@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="<%= locale %>">
 <head>
+  <meta charset="utf-8" />
   <title><%= yield(:title) + " | " if content_for?(:title)%>Boken</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
