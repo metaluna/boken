@@ -2,6 +2,10 @@ Given(/^a story exists$/) do
   @story = FactoryGirl.create(:story)
 end
 
+Given(/^a story with scenes exists$/) do
+  @story = FactoryGirl.create(:story_with_scenes)
+end
+
 When(/^I create a new story$/) do
   @story = FactoryGirl.build(:story_with_abstract)
   visit '/stories/new'
@@ -16,7 +20,6 @@ When(/^I create a new story without a title$/) do
 end
 
 When(/^I change the title$/) do
-  @story = FactoryGirl.create(:story_with_abstract)
   @new_title = "Adventures on Rails"
   visit '/stories'
   find_link('Edit').click
@@ -25,7 +28,6 @@ When(/^I change the title$/) do
 end
 
 When(/^I delete the title$/) do
-  @story = FactoryGirl.create(:story_with_abstract)
   visit '/stories'
   find_link('Edit').click
   fill_in 'Title', with: ''

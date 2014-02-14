@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:show, :edit, :update, :destroy, :play]
 
   # GET /stories
   # GET /stories.json
@@ -12,6 +12,12 @@ class StoriesController < ApplicationController
   def show
   end
 
+  # GET /stories/1/play
+  def play
+    @game = Game.create(story: @story)
+    redirect_to @game
+  end
+  
   # GET /stories/new
   def new
     @story = Story.new

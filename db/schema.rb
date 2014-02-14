@@ -11,7 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213102412) do
+ActiveRecord::Schema.define(version: 20140214195301) do
+
+  create_table "commands", force: true do |t|
+    t.string   "text"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commands", ["game_id"], name: "index_commands_on_game_id"
+
+  create_table "games", force: true do |t|
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["story_id"], name: "index_games_on_story_id"
+
+  create_table "history_entries", force: true do |t|
+    t.integer  "scene_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "history_entries", ["game_id"], name: "index_history_entries_on_game_id"
+
+  create_table "scenes", force: true do |t|
+    t.text     "description"
+    t.integer  "story_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scenes", ["story_id"], name: "index_scenes_on_story_id"
 
   create_table "stories", force: true do |t|
     t.string   "title"

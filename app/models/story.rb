@@ -1,3 +1,6 @@
 class Story < ActiveRecord::Base
-  validates :title, :presence => true, :uniqueness => {:case_sensitive => false }
+  has_many :scenes
+  has_many :games
+  
+  validates :title, presence: true, uniqueness: {case_sensitive: false }
 end

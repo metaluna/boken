@@ -1,4 +1,6 @@
 Feature: Edit story
+    Background:
+        Given a story exists
     Scenario: With valid values
         When I change the title
         Then the changed title is visible
@@ -8,6 +10,5 @@ Feature: Edit story
         Then an error message is visible
 
     Scenario: With an existing title
-        Given a story exists
         When I change the title to one already existing
         Then an error message is visible

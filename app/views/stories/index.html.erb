@@ -1,11 +1,10 @@
-<h1>Listing stories</h1>
+<h1>Adventures</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>Abstract</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -16,8 +15,9 @@
       <tr>
         <td><%= story.title %></td>
         <td><%= story.abstract %></td>
-        <td><%= link_to 'Play Now', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
+        <td><%= link_to 'Play Now', play_story_path(story) %></td>
+        <td><%= link_to 'Show', story %> |
+            <%= link_to 'Edit', edit_story_path(story) %></td>
       </tr>
     <% end %>
   </tbody>
