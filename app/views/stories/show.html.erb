@@ -10,5 +10,6 @@
   <%= @story.abstract %>
 </p>
 
+<%= link_to 'Delete', @story, method: :delete, data: { confirm: "Do you really want to delete the story '#{@story.title}'?" } %> |
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

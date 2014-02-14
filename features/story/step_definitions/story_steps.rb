@@ -1,3 +1,7 @@
+Given(/^a story exists$/) do
+  @story = FactoryGirl.create(:story)
+end
+
 When(/^I create a new story$/) do
   @story = FactoryGirl.build(:story_with_abstract)
   visit '/stories/new'
@@ -6,7 +10,48 @@ When(/^I create a new story$/) do
   click_button 'Create Story'
 end
 
+When(/^I create a new story without a title$/) do
+  visit '/stories/new'
+  click_button 'Create Story'
+end
+
+When(/^I change the title$/) do
+  @story = FactoryGirl.create(:story_with_abstract)
+  @new_title = "Adventures on Rails"
+  visit '/stories'
+  find_link('Edit').click
+  fill_in 'Title', with: @new_title
+  click_button 'Update Story'
+end
+
+When(/^I delete the title$/) do
+  @story = FactoryGirl.create(:story_with_abstract)
+  visit '/stories'
+  find_link('Edit').click
+  fill_in 'Title', with: ''
+  click_button 'Update Story'
+end
+
+When(/^I change the title to one already existing$/) do
+  visit '/stories/new'
+  fill_in 'Title', with: @story.title
+  click_button 'Create Story'
+end
+
+When(/^I delete the story$/) do
+  visit "/stories/#{@story.to_param}"
+  find_link('Delete').click
+end
+
 Then(/^the story is listed on the homepage$/) do
   expect(page).to have_content @story.title
   expect(page).to have_content @story.abstract
+end
+
+Then(/^the changed title is visible$/) do
+  expect(page).to have_content @new_title
+end
+
+Then(/^the story is not visible$/) do
+  expect(page).not_to have_content @story.title
 end
