@@ -12,7 +12,7 @@
 
   <tbody>
     <% @stories.each do |story| %>
-      <tr>
+      <tr id="story_<%= story.id %>">
         <td><%= story.title %></td>
         <td><%= story.abstract %></td>
         <td><%= link_to 'Play Now', play_story_path(story) %></td>

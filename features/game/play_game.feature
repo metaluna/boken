@@ -12,4 +12,10 @@ Feature: Play a game
         Given a game is running
         When I send commands to the game
         Then the server's answer is inserted after the last message
+
+    @javascript
+    Scenario: Send valid option
+        Given a game is running
+        When I send a valid option
+        Then the next scene is displayed
  

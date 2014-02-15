@@ -1,2 +1,3 @@
 $("<p><%= escape_javascript(@command.text) %></p>").appendTo("#output");
+$("<%= render partial: "scenes/scene", object: @scene %>").appendTo("#output");
 $("#input").find('input:text,textarea').val('');

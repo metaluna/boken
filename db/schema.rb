@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214195301) do
+ActiveRecord::Schema.define(version: 20140215151535) do
 
   create_table "commands", force: true do |t|
     t.string   "text"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140214195301) do
     t.integer  "story_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_scene_id"
   end
 
   add_index "games", ["story_id"], name: "index_games_on_story_id"
@@ -54,5 +55,16 @@ ActiveRecord::Schema.define(version: 20140214195301) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "triggers", force: true do |t|
+    t.string   "text"
+    t.integer  "scene_id"
+    t.integer  "target_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "triggers", ["scene_id"], name: "index_triggers_on_scene_id"
+  add_index "triggers", ["target_id"], name: "index_triggers_on_target_id"
 
 end

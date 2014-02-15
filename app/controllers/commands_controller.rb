@@ -11,9 +11,10 @@ class CommandsController < ApplicationController
     
     respond_to do |format|
       if @command.save
+        @scene = @game.execute(@command.text)
         format.js
       else
-        format.js { render inline: '$("#output").append("<p>ERROR</p>")' }
+        format.js { render inline: "<p>ERROR</p>" }
       end
     end
   end
