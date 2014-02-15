@@ -1,9 +1,9 @@
-<div class="output">
+<div id="output">
   <% @game.history_entries.each do |entry| %>
     <%= render entry.scene %>
   <% end %>
 </div>
-<div class="input">
+<div id="input">
   <%= form_for([@game, @new_command], remote: true) do |f| %>
     <%= f.text_field :text %>
     <%= f.submit "Send" %>

@@ -54,5 +54,6 @@ group :test do
   gem 'cucumber-rails', '~> 1.4', :require => false
   gem 'database_cleaner', '~> 1.2'
   gem 'capybara', '~> 2.2'
+  gem 'selenium-webdriver', '~> 2.39.0'
   gem 'zeus', '~> 0.13.3'
 end
