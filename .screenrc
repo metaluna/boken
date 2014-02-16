@@ -3,6 +3,6 @@ termcapinfo xterm ti@:te@
 hardstatus alwayslastline "%{rw}%H%{wk}|%?%-Lw%?%{wb}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
 
 screen -t Zeus		0 zeus start
-screen -t Web		1 sleep 2s; zeus server
+screen -t Web		1 sleep 5s; zeus server
 screen -t Guard 	2 bundle exec guard
 screen -t Rails		3

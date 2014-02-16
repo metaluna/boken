@@ -9,8 +9,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  
+  <%= render 'layouts/user_widget' %>
+  <%= render 'layouts/messages' %>
+  <%= yield %>
 
 </body>
 </html>
