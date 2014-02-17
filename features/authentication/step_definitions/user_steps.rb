@@ -1,5 +1,5 @@
 Given(/^I am not logged in$/) do
-  pending # express the regexp above with the code you wish you had
+  visit '/users/sign_out'
 end
 
 Given(/^a user exists$/) do
@@ -10,21 +10,21 @@ Given(/^a user exists$/) do
 end
 
 When(/^I enter the wrong password$/) do
-  pending # express the regexp above with the code you wish you had
+  log_in(@username, @password + "XXX")
 end
 
 When(/^I enter an invalid username$/) do
-  pending # express the regexp above with the code you wish you had
+  log_in("#{@username}XXX", @password)
 end
 
 When(/^I enter the correct credentials$/) do
-  pending # express the regexp above with the code you wish you had
+  log_in(@username, @password)
 end
 
 Then(/^an error message about wrong credentials is displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content('Invalid')
 end
 
 Then(/^a welcome message is displayed$/) do
-  pending # express the regexp above with the code you wish you had
+  expect(page).to have_content('successful')
 end
