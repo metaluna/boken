@@ -77,6 +77,18 @@ When(/^I try to register with an existing email address$/) do
   register_user(@user2.username, @user1.email, @user2.password, @user2.password)
 end
 
+When(/^I log out$/) do
+  visit '/users/sign_out'
+end
+
+Then(/^a success message is displayed$/) do
+  expect(page).to have_content('successful')
+end
+
+Then(/^I am no longer logged in$/) do
+  expect(page).not_to have_content('Logout')
+end
+
 Then(/^an error message is displayed$/) do
   expect(page).to have_content('error')
 end
