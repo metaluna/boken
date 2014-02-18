@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -65,4 +66,7 @@ RSpec.configure do |config|
   
   # activate authentication helpers sign_in and sign_out
   config.include Devise::TestHelpers, type: :controller
+  
+  # use Poltergeist/PhantomJS
+  Capybara.javascript_driver = :poltergeist
 end
