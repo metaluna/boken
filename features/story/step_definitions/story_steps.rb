@@ -6,6 +6,14 @@ Given(/^a story with scenes exists$/) do
   @story = FactoryGirl.create(:story_with_scenes)
 end
 
+Given(/^a story named "(.*?)" exists$/) do |storyname|
+  FactoryGirl.create(:story, title: storyname)
+end
+
+When(/^I go to the new story page$/) do
+  visit '/stories/new'
+end
+
 When(/^I create a new story$/) do
   @story = FactoryGirl.build(:story_with_abstract)
   visit '/stories/new'

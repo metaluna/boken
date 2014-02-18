@@ -108,3 +108,9 @@ end
 Then(/^I am redirected to the homepage$/) do
   expect(page).to have_content('Adventures')
 end
+
+Then(/^I should see the login page$/) do
+  within('form') do
+    expect(page).to have_button 'Login'
+  end
+end

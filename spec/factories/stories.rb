@@ -1,6 +1,7 @@
 FactoryGirl.define do 
   factory :story do
     sequence(:title) {|n| "Abenteuer #{n}" }
+    user
     
     factory :story_with_abstract do
       abstract 'Das groesste Abenteuer aller Zeiten!'

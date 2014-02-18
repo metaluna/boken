@@ -2,6 +2,12 @@ Given(/^a game is running$/) do
   @game = FactoryGirl.create(:game)
 end
 
+Given(/^a user named "(.*?)" started playing "(.*?)"$/) do |username, storyname|
+  user = User.find_by! username: username.downcase
+  story = Story.find_by! title: storyname
+  FactoryGirl.create(:game, story: story, user: user)
+end
+
 When(/^I start a new game$/) do
   start_playing @story
 end
@@ -15,6 +21,11 @@ When(/^I send a valid option$/) do
   @trigger = @game.story.scenes.first.triggers.first
   @command_text = @trigger.text
   submit_command @game, @command_text
+end
+
+When(/^I start a new game of "(.*?)"$/) do |storyname|
+  story = Story.find_by! title: storyname
+  start_playing story
 end
 
 Then(/^the first scene of the story is shown$/) do

@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy, :play]
+  before_filter :authenticate_user!, except: [:index, :show, :play]
 
   # GET /stories
   # GET /stories.json
@@ -14,7 +15,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/play
   def play
-    @game = Game.create(story: @story)
+    @game = Game.create!(story: @story, user: current_user)
     redirect_to @game
   end
   
@@ -31,6 +32,7 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
+    @story.user = current_user
 
     respond_to do |format|
       if @story.save

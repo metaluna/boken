@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to  :story
+  belongs_to  :user
   has_many    :history_entries, -> { order "created_at ASC" }
   has_many    :commands, -> { order "created_at ASC" }
   belongs_to  :current_scene, class_name: "Scene"

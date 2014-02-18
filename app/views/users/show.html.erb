@@ -1,0 +1,29 @@
+<%= content_for(:title) { "#{@user.username}'s page" } %>
+<h1><%= @user.username  %></h1>
+
+<% unless @user.stories.empty? %>
+<div id="authored_stories" class="stories_list">
+  <h2>authored adventures</h2>
+  <% @user.stories.each do |story| %>
+    <%= render story %>
+  <% end %>
+</div>
+<% end %>
+
+<% unless @user.games.empty? %>
+<div id="completed_stories" class="stories_list">
+  <h2>completed adventures</h2>
+  <% @user.games.each do |game| %>
+    <%= render game if game.finished? %>
+  <% end %>
+</div>
+<% end %>
+
+<% if current_user == @user && !@user.games.empty? %>
+<div id="saved_stories" class="stories_list">
+  <h2>saved adventures</h2>
+  <% @user.games.each do |game| %>
+    <%= render game unless game.finished? %>
+  <% end %>
+</div>
+<% end %>

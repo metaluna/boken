@@ -62,4 +62,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  
+  # activate authentication helpers sign_in and sign_out
+  config.include Devise::TestHelpers, type: :controller
 end

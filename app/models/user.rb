@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
        
+  has_many :stories
+  has_many :games
+       
   validates :username, presence: true, :uniqueness => { :case_sensitive => false }
   validates :email,    presence: true, :uniqueness => { :case_sensitive => false },
                           format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
