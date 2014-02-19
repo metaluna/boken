@@ -10,6 +10,9 @@ class Game < ActiveRecord::Base
   before_create { self.current_scene = self.story.scenes.first }
   after_create  { self.history_entries.create(scene: self.current_scene) }
   
+  scope :finished, -> { where(finished: true) }
+  scope :unfinished, -> { where(finished: false) }
+  
   def execute(command)
     command = command.text if command.is_a? Command
     

@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140218113823) do
     t.datetime "updated_at"
     t.integer  "current_scene_id"
     t.integer  "user_id"
-    t.boolean  "finished"
+    t.boolean  "finished",         default: false
   end
 
   add_index "games", ["story_id"], name: "index_games_on_story_id"

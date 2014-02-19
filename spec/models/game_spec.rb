@@ -40,4 +40,47 @@ describe Game do
       end
     end
   end
+  
+  describe "with scope finished" do
+    context "having a finished game" do
+      let!(:finished_game) { FactoryGirl.create(:finished_game) }
+      let!(:unfinished_game) { FactoryGirl.create(:game)}
+      
+      it "finds the finished game" do
+        games = Game.finished
+        expect(games.count).to eq 1
+        expect(games).to include finished_game
+      end
+      
+    end
+    context "having no finished games" do
+      let!(:unfinished_game) { FactoryGirl.create(:game) }
+      
+      it "finds no games" do
+        expect(Game.finished.count).to eq 0
+      end
+    end
+  end
+  
+    describe "with scope unfinished" do
+    context "having an unfinished game" do
+      let!(:finished_game) { FactoryGirl.create(:finished_game) }
+      let!(:unfinished_game) { FactoryGirl.create(:game)}
+      
+      it "finds the unfinished game" do
+        games = Game.unfinished
+        expect(games.count).to eq 1
+        expect(games).to include unfinished_game
+      end
+      
+    end
+    context "having no unfinished games" do
+      let!(:finished_game) { FactoryGirl.create(:finished_game) }
+      
+      it "finds no games" do
+        expect(Game.unfinished.count).to eq 0
+      end
+    end
+  end
+  
 end

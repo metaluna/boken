@@ -10,20 +10,20 @@
 </div>
 <% end %>
 
-<% unless @user.games.empty? %>
+<% unless @user.games.finished.empty? %>
 <div id="completed_stories" class="stories_list">
   <h2>completed adventures</h2>
-  <% @user.games.each do |game| %>
-    <%= render game if game.finished? %>
+  <% @user.games.finished.each do |game| %>
+    <%= render game%>
   <% end %>
 </div>
 <% end %>
 
-<% if current_user == @user && !@user.games.empty? %>
+<% if current_user == @user && !@user.games.unfinished.empty? %>
 <div id="saved_stories" class="stories_list">
   <h2>saved adventures</h2>
-  <% @user.games.each do |game| %>
-    <%= render game unless game.finished? %>
+  <% @user.games.unfinished.each do |game| %>
+    <%= render game %>
   <% end %>
 </div>
 <% end %>
