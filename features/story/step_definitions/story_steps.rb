@@ -10,6 +10,10 @@ Given(/^a story named "(.*?)" exists$/) do |storyname|
   FactoryGirl.create(:story, title: storyname)
 end
 
+Given(/^a story authored by me exists$/) do
+  @story = FactoryGirl.create(:story, user: @user)
+end
+
 When(/^I go to the new story page$/) do
   visit '/stories/new'
 end
