@@ -15,7 +15,7 @@
       <tr id="story_<%= story.id %>">
         <td><%= story.title %></td>
         <td><%= story.abstract %></td>
-        <td><%= link_to 'Play Now', play_story_path(story) %></td>
+        <td><%= link_to 'Play Now', games_path(game: { story_id: story }), method: :post %></td>
         <td><%= link_to 'Show', story %> |
             <%= link_to 'Edit', edit_story_path(story) %></td>
       </tr>
