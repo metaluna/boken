@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     end
   
     def show
+      @own_page = current_user == @user
     end
 
   private

@@ -19,7 +19,7 @@
 </div>
 <% end %>
 
-<% if current_user == @user && !@user.games.unfinished.empty? %>
+<% if @own_page && !@user.games.unfinished.empty? %>
 <div id="saved_stories" class="stories_list">
   <h2>saved adventures</h2>
   <% @user.games.unfinished.each do |game| %>
